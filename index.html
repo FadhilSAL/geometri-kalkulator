@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+
+        }
+ 
+        .calculator {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+        }
+ 
+        #input-fields {
+            width: 100%;
+            text-align: left;
+        }
+ 
+        .input-container {
+            margin: 20px 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex: 1;
+            width: 100%;
+            position: relative;
+        }
+ 
+        input {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            position: absolute;
+            right: 0;
+            top: 5px;
+        }
+ 
+        h1 {
+            margin: 0;
+            color: #333;
+        }
+ 
+        #results {
+            display: none;
+        }
+ 
+        button {
+            text-align: center;
+            background-color: blue;
+            border-style: none;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+       button:hover{background-color: #6363fc;
+                    color: #dad1d1;
+    }
+ 
+img{margin-left: 100px;
+    height: 300px;
+    width: 400px;
+}
+
+.image-container{justify-content: center;
+            align-items: center;
+        
+}
+ 
+        .selector {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+ 
+        #results {
+            text-align: center;
+        }
+
+       h3{margin-left: 110px;
+         
+    }
+    .keterangan{ align-items: center;
+              
+    }
+
+    
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Kalkulator Geometri</h1>
+        <div class="input-container selector">
+            <label for="shape">Pilih Bentuk:</label>
+            <select id="shape" onchange="selectShape()">
+                <option value="triangle">Segitiga Sama Kaki</option>
+                <option value="circle">Lingkaran</option>
+                <option value="rectangle">Persegi Panjang</option>
+                <option value="square">Persegi</option>
+                <option value="parallelogram">
+                    Jajar Genjang
+                </option>
+            </select>
+        </div>
+        <div id="input-fields">
+            <div class="input-container" id="length-div">
+                <label for="length">Panjang:</label>
+                <input type="number" id="length">
+            </div>
+            <div class="input-container" id="width-div">
+                <label for="width">Lebar:</label>
+                <input type="number" id="width">
+            </div>
+            <div class="input-container" id="base-div">
+                <label for="base">Alas:</label>
+                <input type="number" id="base">
+            </div>
+            <div class="input-container" id="height-div">
+                <label for="height">Tinggi:</label>
+                <input type="number" id="height">
+            </div>
+            <div class="input-container" id="radius-div">
+                <label for="radius">Jari-Jari:</label>
+                <input type="number" id="radius">
+            </div>
+                <div class="input-container" id="side1-div">
+                    <label for="side1">Sisi Miring:</label>
+                    <input type="number" id="side1">
+                </div>
+            <div class="input-container" id="side2-div">
+                <label for="side2">Sisi</label>
+                <input type="number" id="side2">
+            </div>
+        </div>
+        <div>
+            <button id="calculate-btn">Hitung</button>
+        </div>
+        <div id="results">
+            <p id="area">Luas: 0 </p>
+            <p id="perimeter">Kelling: 0</p>
+        </div>
+        
+    </div>
+    <div class="image-container">
+       <div id="keterangan">
+        <h4>Keterangan</h4> 
+        <h5>r = Jari-Jari</h5>
+            <h5>&pi; = pi</h5>
+            <h5>Hasil Yang Sebenarnya Telah Dibulatkan !!!</h5>
+       </div>
+
+
+        <img src="segitiga.jpeg" alt=" segitiga sama kaki" id="segitiga">
+          <h3 id="segitiga-rumus1">Rumus Kelling : Sisi Miring x 2 + Alas</h3>
+          <h3 id="segitiga-rumus2">Rumus Luas : 0.5 x Alas x Tinggi</h3>
+        
+          <img src="lingkaran.jpg" alt="lingkaran" id="lingkaran">
+           <h3 id="lingkaran-rumus1">Rumus Kelling : 2 x &pi; x r</h3>
+           <h3 id="lingkaran-rumus2">Rumus Luas : &pi; x r x r </h3>
+           <h3 id="lingkaran-rumus3">Diamater : r x 2</h3>
+        
+          <img src="persegi panjang.jpg" alt="persegi panjang" id="persegi panjang">
+           <h3 id="persegi panjang-rumus1">Rumus Kelling : Panjang x 2 + Lebar x 2</h3>
+           <h3 id="persegi panjang-rumus2">Rumus Luas : Panjang x Lebar</h3>
+        
+          <img src="persegi.jpg" alt="persegi" id="persegi">
+           <h3 id="persegi-rumus1">Rumus Kelling : Sisi + Sisi + Sisi + Sisi</h3>
+           <h3 id="persegi-rumus2">Rumus Luas : Sisi x Sisi</h3>
+        
+          <img src="jajar genjang.jpg" alt="jajar genjang" id="jajar genjang">
+           <h3 id="jajar genjang-rumus1">Rumus Kelling : Alas x 2 + Tinggi x 2</h3>
+           <h3 id="jajar genjang-rumus2">Rumus Luas : Alas x Tinggi</h3>
+
+
+
+
+
+    </div>
+  
+  
+  
+    <script src="script.js"></script>
+</body>
+</html>
